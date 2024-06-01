@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #212121;
+  height: 100vh;
 }
 
 .App-logo {
@@ -81,33 +83,6 @@
   width: 600px;
   
  }
- /* before adding the img to the div with the 
-"card-img" class, remove css styles 
-.card-img .img::before and .card-img .img::after,
-then set the desired styles for .card-img. */
-.card {
-  --font-color: #323232;
-  --font-color-sub: #666;
-  --bg-color: #fff;
-  --main-color: #323232;
-  --main-focus: #2d8cf0;
-  width: 300px;
-  height: 300px;
-  background: var(--bg-color);
-  border: 2px solid var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 20px;
-  gap: 10px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.card:last-child {
-  justify-content: flex-end;
-}
 
 .card-img {
     /* clear and add new css */
@@ -188,6 +163,7 @@ then set the desired styles for .card-img. */
   width: 100%;
   border: 1px solid var(--main-color);
   border-radius: 50px;
+  color: white;
 }
 
 .card-footer {
@@ -211,7 +187,7 @@ then set the desired styles for .card-img. */
 
 .card-btn {
   height: 35px;
-  background: var(--bg-color);
+  background: orange;
   border: 2px solid var(--main-color);
   border-radius: 5px;
   padding: 0 15px;
@@ -241,6 +217,55 @@ then set the desired styles for .card-img. */
   transform: translateY(3px);
 }
 .products{
-  display: flex;
-  justify-content: space-around;
+  /* display: flex;
+  justify-content: space-around; */
 }
+.package {
+  color: white;
+  width: 300px;
+  height: auto;
+  background-image: linear-gradient(163deg, #ff00ff 0%, #3700ff 100%);
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0, 0, 0, 1);
+  
+}
+
+.package:hover {
+  box-shadow: 0px 0px 30px 1px rgba(204, 0, 255, 0.3);
+}
+
+.package2 {
+ 
+  width: 300px;
+  height: auto;
+  background-color: #1d1724;
+  border-radius: 10px;
+  transition: all 0.25s cubic-bezier(0, 0, 0, 1);
+  padding: 15px;
+  /* cursor: pointer; */
+}
+
+.package2:hover {
+  transform: scale(0.98);
+  border-radius: 18px;
+}
+
+.text {
+  color: white;
+  font-size: 17px;
+}
+/* glowing hover card made by: csozi | Website: english.csozi.hu*/
+
+.card2 {
+  margin: auto;
+  width: 80vw;
+  height: 80vh;
+  border-radius: 30px;
+  background: #212121;
+  margin-top: 20px;
+  box-shadow: 15px 15px 30px rgb(25, 25, 25),
+              0px -0px 0px rgb(60, 60, 60);
+ }
+ 
+ 
