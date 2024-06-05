@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../context/cart'
 function Product({ img, title, cena, description, onClickAdd }) {
+
+    const { addItem } = useContext(CartContext);
+
     function add(event){
         onClickAdd(event)
     }
@@ -14,7 +18,7 @@ function Product({ img, title, cena, description, onClickAdd }) {
                 <div class="card-footer">
                     <div class="card-price"><span>$</span> {cena}</div>
                     
-                    <button class=" mx-2 card-btn" onClick={add}>
+                    <button class=" mx-2 card-btn" onClick={(event) => addItem(event)}>
                         Dodaj do koszyka 
                     </button>
                 </div>

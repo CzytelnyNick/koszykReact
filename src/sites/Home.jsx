@@ -5,13 +5,13 @@ import lopata from "../images/lopata.png";
 import gruz from "../images/gruz.png";
 import spaghetti from "../images/spaghetti.png";
 function Home() {
-  const [tab, setTab] = useState([]);
+  
   function add(event) {
     console.log(event.target.parentElement.parentElement.children);
-    setTab([...tab, event.target.parentElement.parentElement.children]);
-    const NewTab = createContext();
-    <NewTab.Provider value={[tab]}></NewTab.Provider>
-    console.log(tab);
+    // setTab([...tab, event.target.parentElement.parentElement.children]);
+    // const NewTab = createContext();
+    // <NewTab.Provider value={tab}></NewTab.Provider>
+    // console.log(tab);
   }
   return (
     <div className="container">
@@ -50,5 +50,5 @@ function Home() {
     </div>
   );
 }
-export const NewTab = createContext("");
+
 export default Home;
