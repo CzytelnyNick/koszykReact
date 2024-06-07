@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import Product from "../components/Product";
 
 export const CartContext = createContext();
 
@@ -8,15 +9,29 @@ export const CartProvider = ({children}) => {
 
     const addItem = (item) => {
         // .. dodaj item do koszyka
-        setCartItems([...cartItems, item.target.parentElement.parentElement.children])
+        
+        /*
+        item = {
+            id: int,
+            name: string,
+
+        }
+        
+        */
+        console.log(item.target.parentElement.parentElement.children);
+        setCartItems([...cartItems, item.target.parentElement.parentElement.children]);
+        
+
         // setCartItems([cart])
         // console.info(item);
     }
     const showItem = () => {
-        cartItems.map((el) => {
-            console.log(el[0])
-            return(<div>{el[0]}</div>)
-        })
+       return( cartItems.map((el) => {
+            
+            
+           return <div dangerouslySetInnerHTML={el[0]}></div>
+        
+        }))
     }
     return <CartContext.Provider value = {
         {
