@@ -18,7 +18,7 @@ export const CartProvider = ({children}) => {
         }
         
         */
-        console.log(item.target.parentElement.parentElement.children);
+        console.log(item.target.parentElement.parentElement.outerHTML);
         setCartItems([...cartItems, item.target.parentElement.parentElement.children]);
         
 
@@ -28,8 +28,9 @@ export const CartProvider = ({children}) => {
     const showItem = () => {
        return( cartItems.map((el) => {
             
-            
-           return <div dangerouslySetInnerHTML={el[0]}></div>
+            console.log(typeof(el[0]))
+            console.log(el[0].outerHTML)
+           return <div><div dangerouslySetInnerHTML={{__html:el[0].outerHTML}}></div><div dangerouslySetInnerHTML={{__html:el[1].outerHTML}}></div></div>
         
         }))
     }
