@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/cart'
-function Product({ img, title, cena, description, onClickAdd }) {
+function Product({ img, id, title, cena, description, onClickAdd }) {
 
     const { addItem } = useContext(CartContext);
 
@@ -11,7 +11,7 @@ function Product({ img, title, cena, description, onClickAdd }) {
         <div className='col-12 col-md-3'>
             <div class="package ">
             <div class="package2">
-                <div class="card-img"><img class="img" src={img} /></div>
+                <div class="card-img"><img id={id} class="img" src={img} /></div>
                 <div class="card-title">{title}</div>
                 <div class="card-subtitle">{description}</div>
                 <hr class="card-divider" />

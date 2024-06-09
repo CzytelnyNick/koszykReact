@@ -16,12 +16,14 @@ function Home() {
     // <NewTab.Provider value={tab}></NewTab.Provider>
     // console.log(tab);
   }
+  let id = 0
   return (
     <div className="container">
       <div className="products my-4">
         <div className="row">
           {items.map((item) => {
-           return <Product img={item.image} title={item.title} cena={item.price} description={item.subtitle}></Product>
+          id++
+           return <Product key={id} id={item.id} img={item.image} title={item.title} cena={item.price} description={item.subtitle}></Product>
 
           })}
          

@@ -4,28 +4,29 @@ import gruz from "./images/gruz.png";
 import spaghetti from "./images/spaghetti.png";
 const items = [
     {
-        id: 1,
+        id: "czolg",
         title: "Czolg",
         subtitle: "Nowy czołg B)",
         price: 30,
         image: czolg
     },
     {
-        id: 2,
+        id: "lopata",
         title: "Łopata",
+        
         subtitle: "Zwykła łopata",
         price: 20,
         image: lopata
     },
     {
-        id: 3,
+        id: "gruz",
         title: "Gruz",
         subtitle: "Gruz 1 kilo",
         price: 40,
         image: gruz
     },
     {
-        id: 4,
+        id: "spaghetti",
         title: "Spaghetti",
         subtitle: "jedzenie",
         price: 4,
