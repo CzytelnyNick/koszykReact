@@ -1,75 +1,82 @@
 import { createContext, useState } from "react";
-import Product from "../components/Product";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({children}) => {
-    const [elBefore, setEl] = useState("")
     const [cartItems, setCartItems] = useState([]);
-
+    
     const addItem = (item) => {
-        // .. dodaj item do koszyka
-        
-        /*
-        item = {
-            id: int,
-            name: string,
+        setCartItems([...cartItems, item.target.parentElement.parentElement.children]);
+    };
 
+    const incrementItem = (itemName) => {
+        const updatedCartItems = cartItems.map((el) => {
+          console.log(el)
+          if (el[0].outerHTML.includes(itemName)) {
+            const countElement = el[1]; // Assuming that the count is in the second element
+            const count = parseInt(countElement.outerHTML.match(/\d+/)[0]) + 1;
+            countElement.outerHTML = countElement.outerHTML.replace(/\d+/, count);
+          }
+          return el;
+        });
+        setCartItems(updatedCartItems);
+      };
+
+    const removeItem = (itemName) => {
+        const updatedCartItems = [];
+        let itemRemoved = false;
+
+        for (let el of cartItems) {
+            if (el[0].outerHTML.includes(itemName) && !itemRemoved) {
+                itemRemoved = true; // Usuń tylko jeden egzemplarz danego produktu
+            } else {
+                updatedCartItems.push(el);
+            }
         }
         
-        */
-        // console.log(item.target.parentElement.parentElement.children.item(0));
-        setCartItems([...cartItems, item.target.parentElement.parentElement.children]);
-        
+        setCartItems(updatedCartItems);
+        console.log(cartItems)
+    };
 
-        // setCartItems([cart])
-        // console.info(item);
-    }
-    
     const showItem = () => {
-        // Definicja obiektu z regexami i licznikami
         const items = {
             czolg: { regex: /czolg/, count: 0, price: 30 },
-            lopata: { regex: /lopata/, count: 0, price:20 },
+            lopata: { regex: /lopata/, count: 0, price: 20 },
             gruz: { regex: /gruz/, count: 0, price: 40 },
             spaghetti: { regex: /spaghetti/, count: 0, price: 4 }
         };
-    
-        // Iteracja przez produkty w koszyku
+
         cartItems.forEach((el) => {
-            // console.log('outerHTML:', el[0].outerHTML); // Debugging: Zobacz co jest w outerHTML
-            
-            // Sprawdzanie każdego regexa i aktualizacja liczników
             for (const item in items) {
                 if (items[item].regex.test(el[0].outerHTML)) {
                     items[item].count++;
-                    // console.log(`Znaleziono ${item}, nowa ilość: ${items[item].count}`); // Debugging: Pokaż dopasowanie i nową ilość
                 }
             }
         });
-    
-        // Generowanie wierszy tabeli dla unikalnych produktów
+
         return Object.keys(items).map((item) => {
             if (items[item].count > 0) {
                 return (
                     <tr key={item}>
                         <td>{item}</td>
                         <td>{items[item].count}</td>
-                        <td>{items[item].count* items[item].price} $</td>
+                        <td>{items[item].count * items[item].price} $</td>
+                        <td>
+                            <button onClick={() => removeItem(item)}>usun</button>
+                        </td>
+                        <td>
+                            <button onClick={() => incrementItem(items[item].count)}>dodaj</button>
+                        </td>
                     </tr>
                 );
             }
-            return null; // Nie zwracaj nic, jeśli licznik jest 0
-        }).filter(Boolean); // Usuwa wartości null z tablicy
+            return null;
+        }).filter(Boolean);
     };
-    return <CartContext.Provider value = {
-        {
-            cartItems,
-            addItem,
-            showItem
-        }
-    }>
-        {children}
-    </CartContext.Provider>
 
-}
+    return (
+        <CartContext.Provider value={{ cartItems, addItem, incrementItem, removeItem, showItem }}>
+            {children}
+        </CartContext.Provider>
+    );
+};

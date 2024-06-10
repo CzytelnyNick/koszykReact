@@ -16,6 +16,7 @@ function MainCartWidget() {
               <th scope="col">Koszt</th>
               
               <th scope="col">Usuwanie</th>
+              <th scope="col">Dodawanie</th>
             </tr>
           </thead>
           <tbody>
